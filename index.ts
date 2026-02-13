@@ -112,8 +112,8 @@ export default {
       async execute(_id: string, params: any) {
         const p = params as { x: number; y: number; button?: string };
         const btn = p.button ?? "left";
-        run("python3", [controlPy, "move", String(p.x), String(p.y)], 10_000);
-        run("python3", [controlPy, "click", btn], 10_000);
+        // Pass x,y to click directly (needed for evdev absolute positioning on Wayland)
+        run("sudo", ["python3", controlPy, "click", btn, String(p.x), String(p.y)], 10_000);
         return ok("Clicked " + btn + " at (" + p.x + ", " + p.y + ")");
       },
     });
@@ -129,7 +129,7 @@ export default {
       }),
       async execute(_id: string, params: any) {
         const p = params as { x: number; y: number };
-        run("python3", [controlPy, "move", String(p.x), String(p.y)], 10_000);
+        run("sudo", ["python3", controlPy, "move", String(p.x), String(p.y)], 10_000);
         return ok("Mouse moved to (" + p.x + ", " + p.y + ")");
       },
     });
@@ -144,7 +144,7 @@ export default {
       }),
       async execute(_id: string, params: any) {
         const t = (params as { text: string }).text;
-        run("python3", [controlPy, "type", t], 15_000);
+        run("sudo", ["python3", controlPy, "type", t], 15_000);
         return ok("Typed: " + t);
       },
     });
@@ -159,7 +159,7 @@ export default {
       }),
       async execute(_id: string, params: any) {
         const c = (params as { combo: string }).combo;
-        run("python3", [controlPy, "key", c], 10_000);
+        run("sudo", ["python3", controlPy, "key", c], 10_000);
         return ok("Pressed: " + c);
       },
     });
