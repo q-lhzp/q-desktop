@@ -1,0 +1,25 @@
+{
+  "id": "q-desktop",
+  "name": "Q Desktop Automation",
+  "description": "Desktop automation tools (screenshot, vision look, OCR, input, window listing)",
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "workspacePath": {
+        "type": "string",
+        "description": "Pfad zum Workspace",
+        "default": "/home/leo/Schreibtisch"
+      },
+      "screenshotDir": {
+        "type": "string",
+        "description": "Pfad für Screenshots",
+        "default": "/home/leo/Schreibtisch/screenshots"
+      },
+      "visionModel": {
+        "type": "string",
+        "description": "Modell für desktop_look Vision-Analyse",
+        "default": "openai/gpt-4o-mini"
+      }
+    }
+  }
+}

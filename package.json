@@ -1,0 +1,19 @@
+{
+  "name": "q-desktop",
+  "version": "0.1.0",
+  "description": "OpenClaw plugin: Desktop automation tools for Q (screenshots, OCR, input, windows)",
+  "private": true,
+  "type": "module",
+  "main": "./index.ts",
+  "scripts": {
+    "lint": "node -c index.ts",
+    "test": "echo \"(no tests yet)\""
+  },
+  "dependencies": {
+    "openclaw": "^2026.2.9",
+    "@sinclair/typebox": "^0.34.41"
+  },
+  "openclaw": {
+    "extensions": ["./index.ts"]
+  }
+}
